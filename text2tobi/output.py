@@ -21,15 +21,12 @@ _BREAK_STRENGTH_MAP = {
 # ── Formatters ─────────────────────────────────────────────────────────────────
 
 def format_table(annotations: list[dict]) -> str:
-    """
-    Default output: one word per line, tab-separated.
-
-    word    boundary    intonation    break_index
-    """
-    lines = ["word\tboundary\tintonation\tbreak_index"]
+    col_w = max(len(a["word"]) for a in annotations) + 2
+    header = f"{'word':<{col_w}}{'boundary':<12}{'intonation':<14}{'break_index'}"
+    lines = [header]
     for ann in annotations:
         lines.append(
-            f"{ann['word']}\t{ann['boundary']}\t{ann['intonation']}\t{ann['break_index']}"
+            f"{ann['word']:<{col_w}}{ann['boundary']:<12}{ann['intonation']:<14}{ann['break_index']}"
         )
     return "\n".join(lines)
 

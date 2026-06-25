@@ -34,7 +34,7 @@ ANNOTATION FLAGS (apply to string or file input)
   --ssml                            output SSML XML instead of the default table
   --raw                             output inline bracket annotations
   --clean                           strip timestamps, headers, and empty lines (file input only)
-  --model MODEL_NAME                select a registered model (default: libri+sbc_pos_stl)
+  --model MODEL_NAME                select a registered model (default: libri+peoples+sbc)
   --checkpoint PATH                 override registry; load from an explicit local path
   output_path                       optional output file path (default: stdout)
 
@@ -48,12 +48,11 @@ INFO = """\
 text2tobi — model and limitation details
 
 MODEL
-  Default model : libri+sbc_pos_stl
+  Default model : libri+peoples+sbc
   Architecture  : DistilBERT multi-task token classifier
   Heads         : boundary detection (2-class)
                   intonation type    (3-class: H% / L% / !H%)
                   break index        (2-class: 3 / 4)
-  POS injection : spaCy en_core_web_sm (post-transformer, combined mode)
 
 TRAINING DATA
   LibriTTS   (~145k samples, silver-standard via PSST + Wav2ToBI consensus)
