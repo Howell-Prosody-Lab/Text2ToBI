@@ -1,4 +1,4 @@
-# text2tobi
+# Text2ToBI
 
 A CLI tool for ToBI prosodic annotation from text alone. No audio required at inference time.
 
@@ -34,7 +34,7 @@ Make sure this is executed one level above the folder containing code (current d
 
 To use a local checkpoint instead:
 
-```bash
+```bashF
 python -m text2tobi "some text" --checkpoint /path/to/checkpoint
 ```
 
@@ -127,3 +127,6 @@ DistilBERT encoder
          ├─► intonation_head  Linear(768 → 3)   H% / L% / !H%
          └─► break_idx_head   Linear(768 → 2)   index-3 / index-4
 ```
+## License
+
+Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
