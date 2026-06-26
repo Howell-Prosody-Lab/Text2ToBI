@@ -5,10 +5,9 @@
 
 MODEL_REGISTRY = {
     "libri+peoples+sbc": {
-        "hub_path": "Primaski/text2tobi",
+        "hub_path": "lemmatix/text2tobi",
         "requires_pos": False,
     },
-    # Future models slotted in here.
 }
 
 DEFAULT_MODEL = "libri+peoples+sbc"
