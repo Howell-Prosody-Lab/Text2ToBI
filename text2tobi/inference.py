@@ -2,6 +2,7 @@
 # Tokenization, POS tagging, chunking, and prediction logic.
 
 import torch
+import re
 from .model import POS_TAG_TO_ID, UNIVERSAL_TO_TOKEN, UNK_POS_TOKEN
 
 # Speaker change marker used internally (matches training pipeline).
@@ -279,13 +280,9 @@ def predict(
 
 
 def words_from_string(text: str) -> list[str]:
-    """
-    Split a quoted CLI string into words.
-    Internal speaker change marker ' ## ' becomes SPK_CHANGE_TOKEN.
-    """
-    # Normalise speaker change marker.
     text = text.replace(" ## ", f" {SPK_CHANGE_TOKEN} ")
-    return text.split()
+    words = text.split()
+    return [re.sub(r"[^\w\s]", "", w).lower() for w in words if re.sub(r"[^\w\s]", "", w)]
 
 
 def words_from_file(path: str, clean: bool = False) -> list[str]:
